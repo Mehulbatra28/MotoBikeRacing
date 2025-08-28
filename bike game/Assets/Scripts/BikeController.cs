@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.UI;
 public class BikeController : MonoBehaviour
 {
     public Rigidbody2D frontTire;
@@ -7,7 +7,7 @@ public class BikeController : MonoBehaviour
     public Rigidbody2D Bike;
     public float speed = 10000f;
     public float rotationSpeed = 300f;
-
+    public Text lol;
     private float moveInput;
 
    public void Update()
