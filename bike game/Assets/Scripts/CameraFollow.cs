@@ -5,7 +5,7 @@ public class CameraFollow : MonoBehaviour
     public Transform player;       // Reference to the player
     public Vector3 offset;         // Offset between player and camera
     public float smoothSpeed = 0.125f; // Smoothing factor
-    public float maxY = 6.25f;
+   // public float maxY = 6.25f;
     public float minY = -0f;
 
     void LateUpdate()
@@ -15,10 +15,10 @@ public class CameraFollow : MonoBehaviour
             // Desired position is player's position + offset
             Vector3 desiredPosition = player.position + offset;
             
-             if (desiredPosition.y > maxY)
-        {
-            desiredPosition.y = maxY;
-        }
+        //     if (desiredPosition.y > maxY)
+        //{
+        //    desiredPosition.y = maxY;
+        //}
 
             if (desiredPosition.y < minY)
         {
