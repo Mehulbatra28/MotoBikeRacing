@@ -10,7 +10,13 @@ public class GameUI : MonoBehaviour
     public GameObject DeathPanel;
     public GameObject GamePanel;
     public static GameUI instance;
-   
+     private PageState currentState;
+   public enum PageState
+    {
+        Pause,
+        Game,
+        Death
+    }
 
    void Awake()
    {
@@ -19,36 +25,60 @@ public class GameUI : MonoBehaviour
         instance = this;
     }
    }
+   void Start()
+   {
+     SetPageState(PageState.Game);
+   }
 
-     void Update()
+   
+    public void SetPageState(PageState newState)
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        currentState=newState;
+        pausePanel.SetActive(false);
+        GamePanel.SetActive(false);
+        DeathPanel.SetActive(false);
+
+        switch(currentState)
         {
-            OnPauseButtonClicked();
+            case PageState.Pause:
+            pausePanel.SetActive(true);
+            break;
+            case PageState.Game:
+            GamePanel.SetActive(true);
+            break;
+            case PageState.Death:
+            DeathPanel.SetActive(true);
+            break;
         }
+    
+
     }
+
+
+   
      #region Pause
 
     public void OnPauseButtonClicked()
     {
         Time.timeScale = 0;
-        pausePanel.SetActive(true);
-        GamePanel.SetActive(false);
+       SetPageState(PageState.Pause);
     }
     
     public void OnResumeButtonClicked()
     {
         Time.timeScale = 1;
-        pausePanel.SetActive(false);
-        GamePanel.SetActive(true);
+       SetPageState(PageState.Game);
     }
     public void OnHomeButtonClicked()
     {
         SceneManager.LoadScene("Menu");
+        
     }
     public void OnRestartButtonClicked()
     {
-        SceneManager.LoadScene("Game");
+         Scene currentScene = SceneManager.GetActiveScene();
+    SceneManager.LoadScene(currentScene.buildIndex);
+        Time.timeScale=1;
     }
     #endregion
 
@@ -62,7 +92,7 @@ public class GameUI : MonoBehaviour
       IEnumerator DeathPanelDelay()
       {
           yield return new WaitForSeconds(3f);
-          DeathPanel.SetActive(true);
+         SetPageState(PageState.Death);
           Time.timeScale = 0;
       }
     

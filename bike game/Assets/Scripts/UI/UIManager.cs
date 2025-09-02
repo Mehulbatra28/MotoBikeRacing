@@ -6,7 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    
+    public enum PageState
+    {
+        Menu,
+        Credits,
+        Level
+    }
     public static UIManager instance;
     [Header("Menu")]
     public Sprite speakerOnSprite;    // Sprite for when sound is on
@@ -17,6 +22,8 @@ public class UIManager : MonoBehaviour
     [Header("Panels")]
     public GameObject creditsPanel;
     public GameObject MenuPanel;
+    public GameObject LevelPanel;
+    private PageState currentState;
     
 
 
@@ -37,6 +44,7 @@ public class UIManager : MonoBehaviour
     
     void Start()
     {
+        SetPageState(PageState.Menu);
         // Get the Image component from the speaker button
         if (SpeakerButton != null)
         {
@@ -54,9 +62,32 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void SetPageState(PageState newState)
+    {
+        currentState=newState;
+        MenuPanel.SetActive(false);
+        creditsPanel.SetActive(false);
+        LevelPanel.SetActive(false);
+
+        switch(currentState)
+        {
+            case PageState.Menu:
+            MenuPanel.SetActive(true);
+            break;
+            case PageState.Credits:
+            creditsPanel.SetActive(true);
+            break;
+            case PageState.Level:
+            LevelPanel.SetActive(true);
+            break;
+        }
+    
+
+    }
+
     public void OnPlayButtonClicked()
     {
-        SceneManager.LoadScene("Game");
+       SetPageState(PageState.Level);
     }
     
     public void OnQuitButtonClicked()
@@ -99,23 +130,14 @@ public class UIManager : MonoBehaviour
     
     public void OnCreditsButtonClicked()
     {
-        if (creditsPanel != null && MenuPanel != null)
-        {
-            creditsPanel.SetActive(true);
-            MenuPanel.SetActive(false);
-        }
-        else
-        {
-            Debug.LogWarning("Credits panel or Menu panel is not assigned!");
-        }
+     SetPageState(PageState.Credits);
     }
     #endregion
 
     #region Credits
     public void OnBackButtonClicked()
     {
-        creditsPanel.SetActive(false);
-        MenuPanel.SetActive(true);
+       SetPageState(PageState.Menu);
     }
     #endregion
 

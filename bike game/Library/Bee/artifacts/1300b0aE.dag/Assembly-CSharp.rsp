@@ -400,9 +400,11 @@
 "Assets/Scripts/Environment/ParallaxEffect.cs"
 "Assets/Scripts/Environment/TerrainCreator.cs"
 "Assets/Scripts/UI/GameUI.cs"
+"Assets/Scripts/UI/LevelMenu.cs"
 "Assets/Scripts/UI/Menu.cs"
 "Assets/Scripts/UI/Pause.cs"
 "Assets/Scripts/UI/UIManager.cs"
+"Assets/WinScript.cs"
 -langversion:9.0
 /deterministic
 /optimize+
