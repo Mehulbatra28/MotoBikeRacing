@@ -34,16 +34,22 @@ public class UIManager : MonoBehaviour
         if(instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // Prevent destruction when scenes change
-        }
-        else
-        {
-            Destroy(gameObject);
         }
     }
     
     void Start()
     {
+    //     if(MenuPanel==null)
+    //     {
+    //     var x=GameObject.Find("MenuPanel");
+    //     }
+    //      if(LevelPanel==null){
+    //     var y=GameObject.Find("LevelPanel");
+    //      }
+    //      if(creditsPanel==null)
+    //      {
+    //     var z=GameObject.Find("CreditsPanel");
+    //      }
         SetPageState(PageState.Menu);
         // Get the Image component from the speaker button
         if (SpeakerButton != null)

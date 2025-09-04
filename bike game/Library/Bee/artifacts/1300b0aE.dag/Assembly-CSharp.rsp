@@ -396,15 +396,15 @@
 "Assets/Free 2D Cartoon Parallax Background/Demo/Script/ParallaxBackground_0.cs"
 "Assets/Scripts/Bike/BikeController.cs"
 "Assets/Scripts/Bike/DeathScript.cs"
+"Assets/Scripts/Bike/WinScript.cs"
 "Assets/Scripts/Camera/CameraFollow.cs"
 "Assets/Scripts/Environment/ParallaxEffect.cs"
 "Assets/Scripts/Environment/TerrainCreator.cs"
 "Assets/Scripts/UI/GameUI.cs"
-"Assets/Scripts/UI/LevelMenu.cs"
+"Assets/Scripts/UI/LevelManager.cs"
 "Assets/Scripts/UI/Menu.cs"
 "Assets/Scripts/UI/Pause.cs"
 "Assets/Scripts/UI/UIManager.cs"
-"Assets/WinScript.cs"
 -langversion:9.0
 /deterministic
 /optimize+
