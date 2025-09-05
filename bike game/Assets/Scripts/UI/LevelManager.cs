@@ -15,15 +15,15 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    void start()
+    void Start()
     {
         for(int i=0;i<Button.Length;i++)
         {
-            Button[i].GetComponent<Button>().enabled=false;
+            Button[i].GetComponent<Button>().interactable=false;
         }
-        for(int i=1;i<=PlayerPrefs.GetInt("levelUnlocked");i++)
+        for (int i = 1; i <= PlayerPrefs.GetInt("levelUnlocked"); i++)
         {
-            Button[i-1].GetComponent<Button>().enabled=true;
+            Button[i - 1].GetComponent<Button>().interactable = true;
         }
     }
     public void LoadScene(int levelId)
