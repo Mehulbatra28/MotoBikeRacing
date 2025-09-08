@@ -30,6 +30,15 @@ public class DeathScript : MonoBehaviour
         }
     }
 
+    public void OnCollisionEnter2D(Collision2D collider)
+    {
+        if(collider.gameObject.CompareTag("Die"))
+        {
+            Die();
+            Debug.Log("Death by Obstacle");
+        }
+    }
+
     void Die()
     {
         GameUI.instance.DeathPanelActive();

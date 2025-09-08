@@ -9,13 +9,15 @@ public class GameUI : MonoBehaviour
     public GameObject pausePanel;
     public GameObject DeathPanel;
     public GameObject GamePanel;
+    public GameObject WinPanel;
     public static GameUI instance;
      private PageState currentState;
    public enum PageState
     {
         Pause,
         Game,
-        Death
+        Death,
+        Win
     }
 
    void Awake()
@@ -48,6 +50,9 @@ public class GameUI : MonoBehaviour
             break;
             case PageState.Death:
             DeathPanel.SetActive(true);
+            break;
+            case PageState.Win:
+            WinPanel.SetActive(true);
             break;
         }
     
@@ -93,6 +98,16 @@ public class GameUI : MonoBehaviour
       {
           yield return new WaitForSeconds(3f);
          SetPageState(PageState.Death);
+          Time.timeScale = 0;
+      }
+      public void WinPanelActive()
+      {
+        StartCoroutine(WinPanelDelay());
+      } 
+      IEnumerator WinPanelDelay()
+      {
+          yield return new WaitForSeconds(3f);
+         SetPageState(PageState.Win);
           Time.timeScale = 0;
       }
     

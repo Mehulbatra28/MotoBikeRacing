@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TriggerPoint
   - RampTrigger
+  - Die
   layers:
   - Default
   - TransparentFX

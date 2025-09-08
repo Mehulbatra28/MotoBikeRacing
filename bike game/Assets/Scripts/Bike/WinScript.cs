@@ -21,7 +21,17 @@ public class WinScript : MonoBehaviour
 {
     yield return new WaitForSecondsRealtime(delaySeconds);
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Level2");
+        
+        int currentBuildIndex = SceneManager.GetActiveScene().buildIndex;
+        // If player just finished Level 2 (assumed build index 3), show Win panel; otherwise go to Level 2
+        if(currentBuildIndex == 2)
+        {
+            GameUI.instance.WinPanelActive();
+        }
+        else
+        {
+            SceneManager.LoadScene("Level2");
+        }
         
     yield return null;
  
@@ -31,6 +41,7 @@ public class WinScript : MonoBehaviour
 public void levelUnlocked(int nextLevel)
 {
     PlayerPrefs.SetInt("levelUnlocked",nextLevel);
+   
         Debug.Log("level unlocked");
 }
 

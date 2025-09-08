@@ -29,5 +29,6 @@ public class LevelManager : MonoBehaviour
     public void LoadScene(int levelId)
     {
         SceneManager.LoadScene(levelId);
+        Time.timeScale=1f;
     }
 }

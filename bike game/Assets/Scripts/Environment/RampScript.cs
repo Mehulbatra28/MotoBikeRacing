@@ -28,6 +28,14 @@ public class RampScript : MonoBehaviour
         RampOn = true;
     }
 
+    public void OnCollsionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("RampTrigger"))
+        {
+            SqueezeObstacles.instance.Obstacle();
+        }
+    }
+
     void Update()
     {
         if (RampOn)
