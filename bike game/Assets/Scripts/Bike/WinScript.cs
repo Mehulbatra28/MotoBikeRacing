@@ -8,13 +8,13 @@ public class WinScript : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Player"))
+        if(other.CompareTag("TriggerPoint"))
         {
           levelUnlocked(2);
             Time.timeScale=0.5f;
             StartCoroutine(SceneDelay(2f));
             
-            Debug.Log("HI");
+            Debug.Log("Won");
         }
     }
     IEnumerator SceneDelay(float delaySeconds)

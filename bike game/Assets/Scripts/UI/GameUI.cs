@@ -25,7 +25,10 @@ public class GameUI : MonoBehaviour
     if(instance == null)
     {
         instance = this;
+        
     }
+   
+    
    }
    void Start()
    {

@@ -7,7 +7,15 @@ public class DeathScript : MonoBehaviour
 {
      public float upsideDownTime = 3f; // seconds before death
     private float timer = 0f;
-  
+    public static DeathScript instance;
+
+  public void Awake()
+  {
+    if(instance==null)
+    {
+        instance=this;
+    }
+  }
 
     
     void Update()
@@ -30,16 +38,9 @@ public class DeathScript : MonoBehaviour
         }
     }
 
-    public void OnCollisionEnter2D(Collision2D collider)
-    {
-        if(collider.gameObject.CompareTag("Die"))
-        {
-            Die();
-            Debug.Log("Death by Obstacle");
-        }
-    }
+    
 
-    void Die()
+    public void Die()
     {
         GameUI.instance.DeathPanelActive();
         Debug.Log("Player Died - Bike stayed upside down too long!");

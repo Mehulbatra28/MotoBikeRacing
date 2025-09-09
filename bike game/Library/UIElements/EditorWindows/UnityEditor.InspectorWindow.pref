@@ -21,7 +21,11 @@ MonoBehaviour:
   - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-Buttons__unity-vertical-collection-scroll-view__Slider__UnityEngine.UIElements.Scroller+ScrollerSlider
   - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-Button__UnityEngine.UIElements.ListView
   - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-Button__unity-vertical-collection-scroll-view__Slider__UnityEngine.UIElements.Scroller+ScrollerSlider
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-Obstacles__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-Obstacles__unity-vertical-collection-scroll-view__Slider__UnityEngine.UIElements.Scroller+ScrollerSlider
   m_Values:
+  - '{}'
+  - '{}'
   - '{}'
   - '{}'
   - '{}'
