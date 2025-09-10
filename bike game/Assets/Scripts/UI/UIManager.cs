@@ -23,6 +23,8 @@ public class UIManager : MonoBehaviour
     public GameObject creditsPanel;
     public GameObject MenuPanel;
     public GameObject LevelPanel;
+    public GameObject VideoPanel;
+    public GameObject BGImage;
     private PageState currentState;
     
 
@@ -39,17 +41,7 @@ public class UIManager : MonoBehaviour
     
     void Start()
     {
-    //     if(MenuPanel==null)
-    //     {
-    //     var x=GameObject.Find("MenuPanel");
-    //     }
-    //      if(LevelPanel==null){
-    //     var y=GameObject.Find("LevelPanel");
-    //      }
-    //      if(creditsPanel==null)
-    //      {
-    //     var z=GameObject.Find("CreditsPanel");
-    //      }
+   
         SetPageState(PageState.Menu);
         // Get the Image component from the speaker button
         if (SpeakerButton != null)
@@ -79,12 +71,18 @@ public class UIManager : MonoBehaviour
         {
             case PageState.Menu:
             MenuPanel.SetActive(true);
+            VideoPanel.SetActive(true);
+            BGImage.SetActive(false);
             break;
             case PageState.Credits:
             creditsPanel.SetActive(true);
+            VideoPanel.SetActive(false);
+            BGImage.SetActive(true);
             break;
             case PageState.Level:
             LevelPanel.SetActive(true);
+            VideoPanel.SetActive(false);
+            BGImage.SetActive(true);
             break;
         }
     
@@ -93,7 +91,7 @@ public class UIManager : MonoBehaviour
 
     public void OnPlayButtonClicked()
     {
-       SetPageState(PageState.Level);
+        SetPageState(PageState.Level);
     }
     
     public void OnQuitButtonClicked()
@@ -136,14 +134,14 @@ public class UIManager : MonoBehaviour
     
     public void OnCreditsButtonClicked()
     {
-     SetPageState(PageState.Credits);
+        SetPageState(PageState.Credits);
     }
     #endregion
 
     #region Credits
     public void OnBackButtonClicked()
     {
-       SetPageState(PageState.Menu);
+        SetPageState(PageState.Menu);
     }
     #endregion
 

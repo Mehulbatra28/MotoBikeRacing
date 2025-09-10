@@ -116,6 +116,7 @@
 -define:ENABLE_TERRAIN
 -define:ENABLE_TILEMAP
 -define:ENABLE_TIMELINE
+-define:ENABLE_INPUT_SYSTEM
 -define:ENABLE_LEGACY_INPUT_MANAGER
 -define:TEXTCORE_FONT_ENGINE_1_5_OR_NEWER
 -define:CSHARP_7_OR_LATER
@@ -355,6 +356,8 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Burst.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Burst.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Collections.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.ForUI.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.InternalAPIEditorBridge.001.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.InternalAPIEngineBridge.001.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Mathematics.Editor.ref.dll"
@@ -391,10 +394,27 @@
 -analyzer:"F:/unity/2022.3.46f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Free 2D Cartoon Parallax Background/Demo/Script/BackgroundControl_0.cs"
 "Assets/Free 2D Cartoon Parallax Background/Demo/Script/ParallaxBackground_0.cs"
-"Assets/Scripts/BikeController.cs"
-"Assets/Scripts/CameraFollow.cs"
-"Assets/Scripts/ParallaxEffect.cs"
-"Assets/Scripts/TerrainCreator.cs"
+"Assets/Scripts/Bike/BikeController.cs"
+"Assets/Scripts/Bike/DeathScript.cs"
+"Assets/Scripts/Bike/WinScript.cs"
+"Assets/Scripts/Camera/CameraFollow.cs"
+"Assets/Scripts/Environment/Common/ParallaxEffect.cs"
+"Assets/Scripts/Environment/Common/TerrainCreator.cs"
+"Assets/Scripts/Environment/Level1/CutterDead.cs"
+"Assets/Scripts/Environment/Level1/CutterDie.cs"
+"Assets/Scripts/Environment/Level1/WinTrigger.cs"
+"Assets/Scripts/Environment/Level2/BikeLauncher.cs"
+"Assets/Scripts/Environment/Level2/CutterFollow.cs"
+"Assets/Scripts/Environment/Level2/CutterMover.cs"
+"Assets/Scripts/Environment/Level2/RampScript.cs"
+"Assets/Scripts/Environment/Level2/RampTrigger.cs"
+"Assets/Scripts/Environment/Level2/SqueezeObstacles.cs"
+"Assets/Scripts/Environment/Level2/TriggerScript.cs"
+"Assets/Scripts/UI/GameUI.cs"
+"Assets/Scripts/UI/LevelManager.cs"
+"Assets/Scripts/UI/Menu.cs"
+"Assets/Scripts/UI/Pause.cs"
+"Assets/Scripts/UI/UIManager.cs"
 -langversion:9.0
 /deterministic
 /optimize+
