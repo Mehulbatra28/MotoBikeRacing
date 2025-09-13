@@ -12,6 +12,7 @@ public class GameUI : MonoBehaviour
     public GameObject WinPanel;
     public static GameUI instance;
      private PageState currentState;
+  
    public enum PageState
     {
         Pause,
@@ -69,21 +70,36 @@ public class GameUI : MonoBehaviour
     public void OnPauseButtonClicked()
     {
         Time.timeScale = 0;
+        SoundManager.instance.OnButtonClick();
+        SoundManager.instance.PauseGameMusic();
+        SoundManager.instance.StopBikeSource();
        SetPageState(PageState.Pause);
     }
     
     public void OnResumeButtonClicked()
     {
+        SoundManager.instance.OnButtonClick();
         Time.timeScale = 1;
+        SoundManager.instance.OnGameBgPlay();
+        SoundManager.instance.OnBikePlay();
+        
+        
+        
        SetPageState(PageState.Game);
     }
     public void OnHomeButtonClicked()
     {
+        SoundManager.instance.OnButtonClick();
         SceneManager.LoadScene("Menu");
+        SoundManager.instance.StopGameMusic();
+        SoundManager.instance.OnMenuBGPlay();
+        SoundManager.instance.StopBikeSource();
         
     }
+ 
     public void OnRestartButtonClicked()
     {
+        SoundManager.instance.OnButtonClick();
          Scene currentScene = SceneManager.GetActiveScene();
     SceneManager.LoadScene(currentScene.buildIndex);
         Time.timeScale=1;

@@ -42,6 +42,7 @@ public class DeathScript : MonoBehaviour
 
     public void Die()
     {
+        SoundManager.instance.OnDeathPlay();
         GameUI.instance.DeathPanelActive();
         Debug.Log("Player Died - Bike stayed upside down too long!");
       

@@ -29,6 +29,10 @@ public class LevelManager : MonoBehaviour
     public void LoadScene(int levelId)
     {
         SceneManager.LoadScene(levelId);
+        SoundManager.instance.OnButtonClick();
+        SoundManager.instance.StopBackgroundMusic();
+        SoundManager.instance.OnGameBgPlay();
+        SoundManager.instance.OnBikePlay();
         Time.timeScale=1f;
     }
 }

@@ -9,13 +9,18 @@ public class BikeController : MonoBehaviour
     public float speed = 10000f;
     public float rotationSpeed = 300f;
     private float maxY = 25f;
-    
-
-
     private float moveInput;
     private float TiltInput;
     public InputAction moveAction;
-    public InputAction tiltAction; // reference from Input Actions
+    public InputAction tiltAction; 
+
+    public AudioSource GameSource;
+    public float minPitch = 0.8f;
+    public float maxPitch = 2.0f;
+    public float APitch = 1.5f;
+    public float DPitch = 1.0f;
+    private float currentSpeed;
+    private float AInput;
 
     private void OnEnable()
     {
@@ -29,24 +34,47 @@ public class BikeController : MonoBehaviour
         tiltAction.Disable();
     }
 
+
+    void Start()
+    {
+        // AudioSource reference should be assigned in the prefab
+        // If not assigned, try to find it automatically
+        if (GameSource == null)
+        {
+            GameSource = GetComponent<AudioSource>();
+            if (GameSource == null)
+            {
+                GameSource = GetComponentInChildren<AudioSource>();
+            }
+        }
+    }
+    
     private void Update()
     {
         moveInput = moveAction.ReadValue<float>(); 
         Debug.Log("MoveInput: " + moveInput);
         Vector3 accel = tiltAction.ReadValue<Vector3>();
         TiltInput = accel.x;
-
-
-        // Will be -1 (back), 0 (idle), +1 (forward)
+        currentSpeed = GetComponent<Rigidbody2D>().velocity.magnitude;
     }
 
     private void FixedUpdate()
     {
+        AInput = moveInput;
         frontTire.AddTorque(-moveInput * speed * Time.fixedDeltaTime);
         backTire.AddTorque(-moveInput * speed * Time.fixedDeltaTime);
         Bike.AddTorque(-moveInput * rotationSpeed * Time.fixedDeltaTime);
-
-        // Clamp bike's Y position to not exceed maxY
+        float basePitch = Mathf.Lerp(minPitch, maxPitch, currentSpeed / 50f);
+        
+        if(AInput>0)
+        {
+            basePitch*=APitch;
+        }
+        else if (AInput < 0)
+        {
+            basePitch*=DPitch;
+        }
+        GameSource.pitch = Mathf.Lerp(GameSource.pitch, basePitch, Time.deltaTime * 5f);
         Vector2 bikePosition = Bike.position;
         if (bikePosition.y > maxY)
         {

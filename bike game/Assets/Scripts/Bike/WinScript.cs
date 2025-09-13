@@ -13,7 +13,7 @@ public class WinScript : MonoBehaviour
           levelUnlocked(2);
             Time.timeScale=0.5f;
             StartCoroutine(SceneDelay(2f));
-            
+            SoundManager.instance.OnWinPlay();
             Debug.Log("Won");
         }
     }

@@ -17,7 +17,7 @@ public class UIManager : MonoBehaviour
     public Sprite speakerOnSprite;    // Sprite for when sound is on
     public Sprite speakerOffSprite;   // Sprite for when sound is off
     private Image speakerButtonImage;
-    private bool isSoundOn = true;    // Track current sound state
+    public bool isSoundOn = true;    // Track current sound state
     public Button SpeakerButton;
     [Header("Panels")]
     public GameObject creditsPanel;
@@ -41,18 +41,21 @@ public class UIManager : MonoBehaviour
     
     void Start()
     {
-   
         SetPageState(PageState.Menu);
+        
+        // Load sound state from PlayerPrefs (default to true if not set)
+        isSoundOn = PlayerPrefs.GetInt("SoundOn", 1) == 1;
+        
         // Get the Image component from the speaker button
         if (SpeakerButton != null)
         {
             speakerButtonImage = SpeakerButton.GetComponent<Image>();
             
-            // Set initial sprite
-            if (speakerButtonImage != null && speakerOnSprite != null)
-            {
-                speakerButtonImage.sprite = speakerOnSprite;
-            }
+            // Set initial sprite based on loaded state
+            UpdateSpeakerButtonSprite();
+            
+            // Apply audio state
+            ApplyAudioState();
         }
         else
         {
@@ -92,19 +95,39 @@ public class UIManager : MonoBehaviour
     public void OnPlayButtonClicked()
     {
         SetPageState(PageState.Level);
+        SoundManager.instance.OnButtonClick();
     }
     
     public void OnQuitButtonClicked()
     {
         Application.Quit();
+        SoundManager.instance.OnButtonClick();
     }
     
     public void OnSpeakerButtonClicked()
     {
+        // Play button click sound only if sound is on
+        if (isSoundOn)
+        {
+            SoundManager.instance.OnButtonClick();
+        }
+        
         // Toggle sound state
         isSoundOn = !isSoundOn;
         
-        // Change the button image based on state
+        // Save state to PlayerPrefs
+        PlayerPrefs.SetInt("SoundOn", isSoundOn ? 1 : 0);
+        PlayerPrefs.Save();
+        
+        // Update button appearance and audio
+        UpdateSpeakerButtonSprite();
+        ApplyAudioState();
+        
+        Debug.Log("Sound turned " + (isSoundOn ? "ON" : "OFF"));
+    }
+    
+    private void UpdateSpeakerButtonSprite()
+    {
         if (speakerButtonImage != null)
         {
             if (isSoundOn)
@@ -112,8 +135,6 @@ public class UIManager : MonoBehaviour
                 if (speakerOnSprite != null)
                 {
                     speakerButtonImage.sprite = speakerOnSprite;
-                    // Add your sound on logic here
-                    Debug.Log("Sound turned ON");
                 }
             }
             else
@@ -121,20 +142,42 @@ public class UIManager : MonoBehaviour
                 if (speakerOffSprite != null)
                 {
                     speakerButtonImage.sprite = speakerOffSprite;
-                    // Add your sound off logic here
-                    Debug.Log("Sound turned OFF");
                 }
             }
         }
-        else
+    }
+    
+    private void ApplyAudioState()
+    {
+        if (SoundManager.instance != null)
         {
-            Debug.LogWarning("Speaker button image component is null!");
+            if (isSoundOn)
+            {
+                // Unmute audio sources
+                SoundManager.instance.BGSource.mute = false;
+                SoundManager.instance.GameSource.mute = false;
+                SoundManager.instance.BikeSource.mute=false;
+                // Start background music
+                SoundManager.instance.OnMenuBGPlay();
+            }
+            else
+            {
+                // Mute audio sources
+                SoundManager.instance.BGSource.mute = true;
+                SoundManager.instance.GameSource.mute = true;
+                SoundManager.instance.BikeSource.mute=true;
+                // Stop all sounds
+                SoundManager.instance.BGSource.Stop();
+                SoundManager.instance.GameSource.Stop();
+                SoundManager.instance.BikeSource.Stop();
+            }
         }
     }
     
     public void OnCreditsButtonClicked()
     {
         SetPageState(PageState.Credits);
+        SoundManager.instance.OnButtonClick();
     }
     #endregion
 
@@ -142,6 +185,7 @@ public class UIManager : MonoBehaviour
     public void OnBackButtonClicked()
     {
         SetPageState(PageState.Menu);
+        SoundManager.instance.OnButtonClick();
     }
     #endregion
 

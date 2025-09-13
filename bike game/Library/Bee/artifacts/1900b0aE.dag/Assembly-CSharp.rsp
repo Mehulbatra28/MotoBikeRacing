@@ -410,6 +410,7 @@
 "Assets/Scripts/Environment/Level2/RampTrigger.cs"
 "Assets/Scripts/Environment/Level2/SqueezeObstacles.cs"
 "Assets/Scripts/Environment/Level2/TriggerScript.cs"
+"Assets/Scripts/Sounds/SoundManager.cs"
 "Assets/Scripts/UI/GameUI.cs"
 "Assets/Scripts/UI/LevelManager.cs"
 "Assets/Scripts/UI/Menu.cs"
