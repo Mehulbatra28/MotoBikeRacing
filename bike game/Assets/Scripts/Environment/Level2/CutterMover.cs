@@ -4,14 +4,24 @@ using UnityEngine;
 
 public class CutterMover : MonoBehaviour
 {
-   public float moveForce=10f;
-   public float torqueForce=5f;
+   public float moveForce=50f;
+   public float torqueForce=25f;
+    public Vector2 direction;
    public Rigidbody2D rb;
-   public GameObject player;
 
-void start()
+
+void Start()
 {
      rb=GetComponent<Rigidbody2D>();
+     
+     // Set a default direction (right) or use the direction field if set in inspector
+     if(direction == Vector2.zero)
+     {
+         direction = Vector2.right;
+     }
+
+     // Start the coroutine
+     StartCoroutine(CutterDelay());
 }
 
  public void OnCollisionEnter2D(Collision2D collision)
@@ -22,15 +32,13 @@ void start()
         DeathScript.instance.Die();
     }
 }
-void FixedUpdate()
+IEnumerator CutterDelay()
 {
-    if(player!=null)
-    {
-        Vector2 direction=(player.transform.position-transform.position).normalized;
-
-        rb.AddForce(direction*moveForce);
-        float rollDirection=direction.x>=0?-1f:1f;
-        rb.AddTorque(rollDirection*torqueForce);
-    }
+    // Wait for a short delay before starting movement
+    yield return new WaitForSeconds(1.1f);
+    
+    rb.AddForce(direction*moveForce);
+    float rollDirection=direction.x>=0?-1f:1f;
+    rb.AddTorque(rollDirection*torqueForce);
 }
 }

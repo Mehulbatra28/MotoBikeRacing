@@ -333,6 +333,8 @@
 -r:"Library/PackageCache/com.unity.visualscripting@1.9.8/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/Cinemachine.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/com.unity.cinemachine.editor.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aE.dag/IngameDebugConsole.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aE.dag/IngameDebugConsole.Runtime.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/PPv2URPConverters.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/PsdPlugin.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/Unity.2D.Animation.Editor.ref.dll"
@@ -410,10 +412,13 @@
 "Assets/Scripts/Environment/Level2/RampTrigger.cs"
 "Assets/Scripts/Environment/Level2/SqueezeObstacles.cs"
 "Assets/Scripts/Environment/Level2/TriggerScript.cs"
+"Assets/Scripts/Sounds/SoundManager.cs"
 "Assets/Scripts/UI/GameUI.cs"
 "Assets/Scripts/UI/LevelManager.cs"
 "Assets/Scripts/UI/Menu.cs"
+"Assets/Scripts/UI/MenuBestTimeDisplay.cs"
 "Assets/Scripts/UI/Pause.cs"
+"Assets/Scripts/UI/Timer.cs"
 "Assets/Scripts/UI/UIManager.cs"
 -langversion:9.0
 /deterministic

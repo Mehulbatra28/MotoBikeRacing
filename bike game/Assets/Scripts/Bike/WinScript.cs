@@ -14,6 +14,7 @@ public class WinScript : MonoBehaviour
             Time.timeScale=0.5f;
             StartCoroutine(SceneDelay(2f));
             SoundManager.instance.OnWinPlay();
+            Timer.instance.SaveBestTime();
             Debug.Log("Won");
         }
     }

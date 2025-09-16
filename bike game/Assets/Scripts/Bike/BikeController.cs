@@ -13,8 +13,9 @@ public class BikeController : MonoBehaviour
     private float TiltInput;
     public InputAction moveAction;
     public InputAction tiltAction; 
+    private AudioSource BikeSource;
 
-    public AudioSource GameSource;
+    
     public float minPitch = 0.8f;
     public float maxPitch = 2.0f;
     public float APitch = 1.5f;
@@ -37,16 +38,7 @@ public class BikeController : MonoBehaviour
 
     void Start()
     {
-        // AudioSource reference should be assigned in the prefab
-        // If not assigned, try to find it automatically
-        if (GameSource == null)
-        {
-            GameSource = GetComponent<AudioSource>();
-            if (GameSource == null)
-            {
-                GameSource = GetComponentInChildren<AudioSource>();
-            }
-        }
+        BikeSource=SoundManager.instance.BikeSource;
     }
     
     private void Update()
@@ -55,6 +47,7 @@ public class BikeController : MonoBehaviour
         Debug.Log("MoveInput: " + moveInput);
         Vector3 accel = tiltAction.ReadValue<Vector3>();
         TiltInput = accel.x;
+        Debug.Log("TiltAction Vector3: " + accel + " | TiltInput (X): " + TiltInput);
         currentSpeed = GetComponent<Rigidbody2D>().velocity.magnitude;
     }
 
@@ -63,7 +56,7 @@ public class BikeController : MonoBehaviour
         AInput = moveInput;
         frontTire.AddTorque(-moveInput * speed * Time.fixedDeltaTime);
         backTire.AddTorque(-moveInput * speed * Time.fixedDeltaTime);
-        Bike.AddTorque(-moveInput * rotationSpeed * Time.fixedDeltaTime);
+        Bike.AddTorque(-TiltInput* rotationSpeed * Time.fixedDeltaTime);
         float basePitch = Mathf.Lerp(minPitch, maxPitch, currentSpeed / 50f);
         
         if(AInput>0)
@@ -74,7 +67,7 @@ public class BikeController : MonoBehaviour
         {
             basePitch*=DPitch;
         }
-        GameSource.pitch = Mathf.Lerp(GameSource.pitch, basePitch, Time.deltaTime * 5f);
+        BikeSource.pitch = Mathf.Lerp(BikeSource.pitch, basePitch, Time.deltaTime * 5f);
         Vector2 bikePosition = Bike.position;
         if (bikePosition.y > maxY)
         {

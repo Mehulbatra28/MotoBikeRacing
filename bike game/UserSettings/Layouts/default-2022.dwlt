@@ -118,7 +118,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 44
+  controlID: 290
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 45
+  controlID: 291
   draggingID: 0
 --- !u!114 &7
 MonoBehaviour:
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 46
+  controlID: 229
   draggingID: 0
 --- !u!114 &8
 MonoBehaviour:
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 47
+  controlID: 230
   draggingID: 0
 --- !u!114 &9
 MonoBehaviour:
@@ -348,7 +348,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 2e68feff566bfeffd26efeff2e71feffc689feffc889feff688afeff5a8bfefff48cfeffb08dfeffd894feffd095feff9096fefffe9afeffba9bfeff509cfeff9c9dfeffc0a0feffd2a1feffe2a2feff50a4feff7ea7feff64a8feffdcacfeff38b3feffb6b6feffe6b9feffb617ffff5a1fffff0621ffff8623ffff6027ffff6059ffff0883ffff2291ffff2a98ffffaea1ffff10abffffb0c6ffff08d7ffffa4d7fffff8fafffff4ffffff84820000488d00009e8d0000c2180100
+      m_ExpandedIDs: f8faffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -845,9 +845,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1053.3668, y: 782.6834, z: 2.6527994}
+    m_Target: {x: -47.771523, y: -2.1618361, z: -0.015740994}
     speed: 2
-    m_Value: {x: 1053.3668, y: 782.6834, z: 2.6527994}
+    m_Value: {x: -47.771523, y: -2.1618361, z: -0.015740994}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -897,9 +897,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 1014.72064
+    m_Target: 4.8123455
     speed: 2
-    m_Value: 1014.72064
+    m_Value: 4.8123455
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1050,7 +1050,7 @@ MonoBehaviour:
   m_Zoom: -1
   m_ScrollPosition: {x: 0, y: 0}
   m_SelectedObject: {fileID: 0}
-  m_SelectedSpriteRectGUID: 5e97eb03825dee720800000000000000
+  m_SelectedSpriteRectGUID: 00000000000000000000000000000000
   m_LastUsedModuleTypeName: 
 --- !u!114 &17
 MonoBehaviour:
@@ -1129,9 +1129,9 @@ MonoBehaviour:
     m_SceneHandles: 
     m_ShowAllHits: 0
     m_SkipHidden: 0
-    m_SearchArea: 0
+    m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Scripts/Bike
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1139,16 +1139,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Scripts/Bike
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Mehul&Jainil\Documents\GitHub\MotoBikeRacing\bike game
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: e6780000
-    m_LastClickedID: 30950
-    m_ExpandedIDs: 00000000bc780000dc780000e4780000e8780000f6780000fc7800001e7900002479000080790000667a000000ca9a3b
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 74790000
+    m_LastClickedID: 31092
+    m_ExpandedIDs: 000000003e7900006a79000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1176,7 +1176,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000bc780000
+    m_ExpandedIDs: 000000003e790000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1201,8 +1201,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 4e6bfeff
-    m_LastClickedInstanceID: -103602
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300005002000050740000105a00005a6a0000c8860000ce860000d2860000f47d000000000000
     m_RenameOverlay:
@@ -1302,7 +1302,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 56586
+  m_LastSelectedObjectID: 40604
 --- !u!114 &21
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1421,7 +1421,7 @@ MonoBehaviour:
   m_SerializedViewNames:
   - UnityEditor.GameView
   m_SerializedViewValues:
-  - C:\Users\Mehul&Jainil\Documents\GitHub\MotoBikeRacing\bike game\Library\PlayModeViewStates\b8bd7565f4f6ada468da59b97bd940b4
+  - C:\Users\Mehul&Jainil\Documents\GitHub\MotoBikeRacing\bike game\Library\PlayModeViewStates\748047399a5dec84aa510dffee2695c1
   m_PlayModeViewName: Device Simulator
   m_ShowGizmos: 0
   m_TargetDisplay: 0
@@ -1434,7 +1434,7 @@ MonoBehaviour:
   m_UseMipMap: 0
   m_SimulatorState:
     controlPanelVisible: 0
-    controlPanelWidth: 0
+    controlPanelWidth: NaN
     controlPanelFoldoutKeys:
     - UnityEditor.DeviceSimulation.ApplicationSettingsPlugin
     controlPanelFoldoutValues: 00
