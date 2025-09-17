@@ -7,12 +7,10 @@ public class BikeController : MonoBehaviour
     public Rigidbody2D backTire;
     public Rigidbody2D Bike;
     public float speed = 10000f;
-    public float rotationSpeed = 300f;
+    public float rotationSpeed = 10000f;
     private float maxY = 25f;
     private float moveInput;
-    private float TiltInput;
     public InputAction moveAction;
-    public InputAction tiltAction; 
     private AudioSource BikeSource;
 
     
@@ -26,13 +24,13 @@ public class BikeController : MonoBehaviour
     private void OnEnable()
     {
         moveAction.Enable();
-        tiltAction.Enable();
+        
     }
 
     private void OnDisable()
     {
         moveAction.Disable();
-        tiltAction.Disable();
+        
     }
 
 
@@ -45,9 +43,6 @@ public class BikeController : MonoBehaviour
     {
         moveInput = moveAction.ReadValue<float>(); 
         Debug.Log("MoveInput: " + moveInput);
-        Vector3 accel = tiltAction.ReadValue<Vector3>();
-        TiltInput = accel.x;
-        Debug.Log("TiltAction Vector3: " + accel + " | TiltInput (X): " + TiltInput);
         currentSpeed = GetComponent<Rigidbody2D>().velocity.magnitude;
     }
 
@@ -56,7 +51,7 @@ public class BikeController : MonoBehaviour
         AInput = moveInput;
         frontTire.AddTorque(-moveInput * speed * Time.fixedDeltaTime);
         backTire.AddTorque(-moveInput * speed * Time.fixedDeltaTime);
-        Bike.AddTorque(-TiltInput* rotationSpeed * Time.fixedDeltaTime);
+        Bike.AddTorque(-moveInput* rotationSpeed * Time.fixedDeltaTime);
         float basePitch = Mathf.Lerp(minPitch, maxPitch, currentSpeed / 50f);
         
         if(AInput>0)
