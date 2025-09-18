@@ -24,7 +24,6 @@ public class WinScript : MonoBehaviour
         Time.timeScale = 1f;
         
         int currentBuildIndex = SceneManager.GetActiveScene().buildIndex;
-        // If player just finished Level 2 (assumed build index 3), show Win panel; otherwise go to Level 2
         if(currentBuildIndex == 2)
         {
             GameUI.instance.WinPanelActive();

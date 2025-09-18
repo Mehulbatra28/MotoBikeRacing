@@ -125,7 +125,7 @@ public class GameUI : MonoBehaviour
       } 
       IEnumerator WinPanelDelay()
       {
-          yield return new WaitForSeconds(3f);
+          yield return new WaitForSeconds(1f);
          SetPageState(PageState.Win);
           Time.timeScale = 0;
       }

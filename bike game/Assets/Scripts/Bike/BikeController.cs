@@ -7,9 +7,12 @@ public class BikeController : MonoBehaviour
     public Rigidbody2D backTire;
     public Rigidbody2D Bike;
     public float speed = 10000f;
-    public float rotationSpeed = 10000f;
+    public float rotationSpeed = 2000f;
+    public LayerMask groundLayer;
     private float maxY = 25f;
     private float moveInput;
+    private float TiltInput;
+    public InputAction TiltAction;
     public InputAction moveAction;
     private AudioSource BikeSource;
 
@@ -20,16 +23,20 @@ public class BikeController : MonoBehaviour
     public float DPitch = 1.0f;
     private float currentSpeed;
     private float AInput;
+    private Collider2D frontTireCollider;
+    private Collider2D backTireCollider;
 
     private void OnEnable()
     {
         moveAction.Enable();
+        TiltAction.Enable();
         
     }
 
     private void OnDisable()
     {
         moveAction.Disable();
+        TiltAction.Disable();
         
     }
 
@@ -37,12 +44,16 @@ public class BikeController : MonoBehaviour
     void Start()
     {
         BikeSource=SoundManager.instance.BikeSource;
+        frontTireCollider = frontTire != null ? frontTire.GetComponent<Collider2D>() : null;
+        backTireCollider = backTire != null ? backTire.GetComponent<Collider2D>() : null;
     }
     
     private void Update()
     {
         moveInput = moveAction.ReadValue<float>(); 
         Debug.Log("MoveInput: " + moveInput);
+        TiltInput=TiltAction.ReadValue<float>();
+         Debug.Log("TiltInput: " + TiltInput);
         currentSpeed = GetComponent<Rigidbody2D>().velocity.magnitude;
     }
 
@@ -51,7 +62,21 @@ public class BikeController : MonoBehaviour
         AInput = moveInput;
         frontTire.AddTorque(-moveInput * speed * Time.fixedDeltaTime);
         backTire.AddTorque(-moveInput * speed * Time.fixedDeltaTime);
-        Bike.AddTorque(-moveInput* rotationSpeed * Time.fixedDeltaTime);
+		bool isGrounded = false;
+		if (frontTireCollider != null && backTireCollider != null)
+		{
+			isGrounded = frontTireCollider.IsTouchingLayers(groundLayer) || backTireCollider.IsTouchingLayers(groundLayer);
+		}
+        if (isGrounded)
+        {
+            Bike.AddForce(Vector2.right * moveInput * rotationSpeed);
+        }
+        
+        // Allow tilt control via torque (works in air for mid-air control)
+         if (Mathf.Abs(TiltInput) > 0f)
+        {
+            Bike.AddTorque(-TiltInput * rotationSpeed * Time.fixedDeltaTime);
+        }
         float basePitch = Mathf.Lerp(minPitch, maxPitch, currentSpeed / 50f);
         
         if(AInput>0)

@@ -31,15 +31,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Tilt",
-                    "type": "Value",
-                    "id": "23e30530-c2f9-4030-a209-cca0c955ba28",
-                    "expectedControlType": "Vector3",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -260,17 +251,6 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "Fire",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "bd66839c-821b-43c5-98ae-95e8b7aeda96",
-                    "path": "<Accelerometer>/acceleration",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Touch",
-                    "action": "Tilt",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

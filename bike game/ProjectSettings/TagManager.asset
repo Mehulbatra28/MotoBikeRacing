@@ -6,11 +6,12 @@ TagManager:
   tags:
   - TriggerPoint
   - Die
+  - RampTrigger
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 
